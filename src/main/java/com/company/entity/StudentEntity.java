@@ -3,10 +3,7 @@ package com.company.entity;
 import com.company.common.AbstractEntity;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -21,6 +18,6 @@ public class StudentEntity extends AbstractEntity {
     private String email;
     @Column(name="password")
     private String password;
-    @ManyToMany(mappedBy = "studentEntityList")
+    @ManyToMany(mappedBy = "studentEntityList",fetch = FetchType.EAGER)
     private List<CourseEntity> courseEntityList;
 }

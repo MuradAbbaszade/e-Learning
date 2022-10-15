@@ -26,11 +26,7 @@ public class CourseEntity extends AbstractEntity {
             joinColumns = @JoinColumn(name = "course_id"),
             inverseJoinColumns = @JoinColumn(name = "student_id"))
     private List<StudentEntity> studentEntityList;
-    @ManyToMany
-    @JoinTable(
-            name = "course_video",
-            joinColumns = @JoinColumn(name = "course_id"),
-            inverseJoinColumns = @JoinColumn(name = "video"))
-    private List<String> videoList;
+    @OneToMany(mappedBy = "courseEntity")
+    private List<VideoEntity> videoEntityList;
 
 }

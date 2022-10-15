@@ -3,9 +3,8 @@ package com.company.entity;
 import com.company.common.AbstractEntity;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -19,4 +18,6 @@ public class TeacherEntity extends AbstractEntity {
     private String email;
     @Column(name="password")
     private String password;
+    @OneToMany(mappedBy = "teacherEntity")
+    private List<CourseEntity> courseEntityList;
 }

@@ -2,12 +2,13 @@ package com.company.common;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Data
-@Entity
+@MappedSuperclass
 public class AbstractEntity {
+    @Id
     @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 }
