@@ -21,17 +21,25 @@ public class StudentService implements StudentServiceImpl {
     }
 
     @Override
+    public StudentEntity findByEmail(String email) throws Exception {
+        return studentRepository.findByEmail(email)
+                .orElseThrow(() -> new Exception("Student not found"));
+    }
+
+    @Override
     public List<StudentEntity> findAll() {
-        return null;
+        return studentRepository.findAll();
     }
 
     @Override
     public StudentEntity save(StudentEntity studentEntity) {
-        return null;
+        return studentRepository.save(studentEntity);
     }
 
     @Override
-    public StudentEntity deleteById(Long id) {
-        return null;
+    public void deleteById(Long id) throws Exception {
+        studentRepository.findById(id)
+                .orElseThrow(() -> new Exception("Student not found"));
+        studentRepository.deleteById(id);
     }
 }

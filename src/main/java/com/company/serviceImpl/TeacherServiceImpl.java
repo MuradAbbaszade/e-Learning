@@ -5,8 +5,9 @@ import com.company.entity.TeacherEntity;
 import java.util.List;
 
 public interface TeacherServiceImpl {
-    TeacherEntity findById(Long id);
+    TeacherEntity findById(Long id) throws Exception;
+    TeacherEntity findByEmail(String email) throws Exception;
     List<TeacherEntity> findAll();
     TeacherEntity save(TeacherEntity studentEntity);
-    TeacherEntity deleteById(Long id);
+    void deleteById(Long id) throws Exception;
 }

@@ -5,8 +5,8 @@ import com.company.entity.CourseEntity;
 import java.util.List;
 
 public interface CourseServiceImpl {
-    CourseEntity findById(Long id);
+    CourseEntity findById(Long id) throws Exception;
     List<CourseEntity> findAll();
     CourseEntity save(CourseEntity studentEntity);
-    CourseEntity deleteById(Long id);
+    void deleteById(Long id) throws Exception;
 }
