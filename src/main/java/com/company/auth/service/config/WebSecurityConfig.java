@@ -1,4 +1,4 @@
-package com.company.config;
+package com.company.auth.service.config;
 
 import com.company.auth.service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +21,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
+                .inMemoryAuthentication()
+                .withUser("admin").password(passwordEncoder().encode("admin1234")).roles("ADMIN")
+                .and()
+                .and()
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder());
     }
