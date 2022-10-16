@@ -1,13 +1,13 @@
 package com.company.serviceImpl;
 
-import com.company.entity.TeacherEntity;
+import com.company.entity.RoleEntity;
 
 import java.util.List;
 
 public interface TeacherServiceImpl {
-    TeacherEntity findById(Long id) throws Exception;
-    TeacherEntity findByEmail(String email) throws Exception;
-    List<TeacherEntity> findAll();
-    TeacherEntity save(TeacherEntity studentEntity);
+    RoleEntity findById(Long id) throws Exception;
+    RoleEntity findByEmail(String email) throws Exception;
+    List<RoleEntity> findAll();
+    RoleEntity save(RoleEntity studentEntity);
     void deleteById(Long id) throws Exception;
 }

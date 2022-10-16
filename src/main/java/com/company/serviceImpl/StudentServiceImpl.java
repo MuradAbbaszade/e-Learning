@@ -1,13 +1,13 @@
 package com.company.serviceImpl;
 
-import com.company.entity.StudentEntity;
+import com.company.entity.UserEntity;
 
 import java.util.List;
 
 public interface StudentServiceImpl {
-    StudentEntity findById(Long id) throws Exception;
-    StudentEntity findByEmail(String email) throws Exception;
-    List<StudentEntity> findAll();
-    StudentEntity save(StudentEntity studentEntity);
+    UserEntity findById(Long id) throws Exception;
+    UserEntity findByEmail(String email) throws Exception;
+    List<UserEntity> findAll();
+    UserEntity save(UserEntity studentEntity);
     void deleteById(Long id) throws Exception;
 }

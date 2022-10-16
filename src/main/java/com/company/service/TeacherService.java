@@ -1,6 +1,6 @@
 package com.company.service;
 
-import com.company.entity.TeacherEntity;
+import com.company.entity.RoleEntity;
 import com.company.repository.TeacherRepository;
 import com.company.serviceImpl.TeacherServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -15,24 +15,24 @@ public class TeacherService implements TeacherServiceImpl {
     private final TeacherRepository teacherRepository;
 
     @Override
-    public TeacherEntity findById(Long id) throws Exception {
+    public RoleEntity findById(Long id) throws Exception {
         return teacherRepository.findById(id)
         .orElseThrow(() -> new Exception("Teacher not found"));
     }
 
     @Override
-    public TeacherEntity findByEmail(String email) throws Exception {
+    public RoleEntity findByEmail(String email) throws Exception {
         return teacherRepository.findByEmail(email)
                 .orElseThrow(() -> new Exception("Teacher not found"));
     }
 
     @Override
-    public List<TeacherEntity> findAll() {
+    public List<RoleEntity> findAll() {
         return teacherRepository.findAll();
     }
 
     @Override
-    public TeacherEntity save(TeacherEntity studentEntity) {
+    public RoleEntity save(RoleEntity studentEntity) {
         return teacherRepository.save(studentEntity);
     }
 

@@ -18,14 +18,14 @@ public class CourseEntity extends AbstractEntity {
     @JoinColumn(name="field_id",referencedColumnName = "id")
     private FieldEntity fieldEntity;
     @ManyToOne
-    @JoinColumn(name="teacher_id",referencedColumnName = "id")
-    private TeacherEntity teacherEntity;
+    @JoinColumn(name="user_id",referencedColumnName = "id")
+    private UserEntity teacherUserEntity;
     @ManyToMany
     @JoinTable(
-            name = "course_student",
+            name = "course_user",
             joinColumns = @JoinColumn(name = "course_id"),
-            inverseJoinColumns = @JoinColumn(name = "student_id"))
-    private List<StudentEntity> studentEntityList;
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private List<UserEntity> studentUserEntityList;
     @OneToMany(mappedBy = "courseEntity")
     private List<VideoEntity> videoEntityList;
 
