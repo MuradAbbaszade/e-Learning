@@ -1,6 +1,7 @@
 package com.company.entity;
 
 import com.company.common.AbstractEntity;
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Data
+@Builder
 @Table(name="user",schema = "public")
 public class UserEntity extends AbstractEntity {
     @Column(name="name")

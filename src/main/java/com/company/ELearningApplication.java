@@ -1,7 +1,6 @@
 package com.company;
 
-import com.company.service.StudentService;
-import com.company.serviceImpl.StudentServiceImpl;
+import com.company.serviceImpl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -11,7 +10,7 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class ELearningApplication {
     @Autowired
-    StudentServiceImpl studentService;
+    UserServiceImpl studentService;
     public static void main(String[] args){
         SpringApplication.run(ELearningApplication.class);
     }

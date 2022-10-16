@@ -1,8 +1,8 @@
 package com.company.service;
 
 import com.company.entity.UserEntity;
-import com.company.repository.StudentRepository;
-import com.company.serviceImpl.StudentServiceImpl;
+import com.company.repository.UserRepository;
+import com.company.serviceImpl.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +10,9 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
-public class StudentService implements StudentServiceImpl {
+public class UserService implements UserServiceImpl {
 
-    private final StudentRepository studentRepository;
+    private final UserRepository studentRepository;
 
     @Override
     public UserEntity findById(Long id) throws Exception {

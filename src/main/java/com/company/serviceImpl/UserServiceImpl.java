@@ -4,7 +4,7 @@ import com.company.entity.UserEntity;
 
 import java.util.List;
 
-public interface StudentServiceImpl {
+public interface UserServiceImpl {
     UserEntity findById(Long id) throws Exception;
     UserEntity findByEmail(String email) throws Exception;
     List<UserEntity> findAll();
