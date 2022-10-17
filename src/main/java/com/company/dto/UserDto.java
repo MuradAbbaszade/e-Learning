@@ -25,16 +25,9 @@ public class UserDto {
     @Autowired
     RoleService roleService;
     private Long id;
-    @NotEmpty(message = "Please fill the all fields")
-    @Size(min = 2, max = 15, message = "Name size must be between 2 and 15")
     private String name;
-    @NotEmpty(message = "Please fill the all fields")
-    @Size(min = 2, max = 40, message = "Surname size must be between 2 and 40")
     private String surname;
     private String email;
-    @NotEmpty(message = "Please fill the all fields")
-    @Size(min = 2, max = 30, message = "Password size must be between 2 and 30")
     private String password;
-    @NotEmpty(message = "Please fill the all fields")
     private String matchingPassword;
 }

@@ -34,16 +34,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .antMatchers("main").hasAnyAuthority()
-                .antMatchers("login").permitAll()
-                .antMatchers("register").permitAll()
+                .antMatchers("/main").authenticated()
+                .antMatchers("/login*").permitAll()
+                .antMatchers("/register").permitAll()
                 .and()
                 .formLogin()
-                .loginPage("login")
-                .defaultSuccessUrl("main")
+                .loginPage("/login")
+                .loginProcessingUrl("/login")
+                .defaultSuccessUrl("/main",true)
                 .and()
                 .logout()
-                .logoutUrl("logout");
+                .logoutUrl("/logout");
     }
     @Bean
     public PasswordEncoder passwordEncoder(){
