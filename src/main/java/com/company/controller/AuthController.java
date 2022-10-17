@@ -2,8 +2,9 @@ package com.company.controller;
 
 import com.company.auth.service.UserRegisterService;
 import com.company.dto.UserDto;
+import com.company.entity.RoleEntity;
 import com.company.entity.UserEntity;
-import com.company.service.RoleService;
+import com.company.serviceImpl.RoleServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
@@ -17,12 +18,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
 public class AuthController {
     private final UserRegisterService userRegisterService;
-    private final RoleService roleService;
+    private final RoleServiceImpl roleService;
 
     @GetMapping("register")
     public String showRegisterPage(Model model){
@@ -36,7 +39,7 @@ public class AuthController {
     }
 
     @PostMapping("register")
-    public ModelAndView registerUser(@ModelAttribute("userDto") @Valid UserDto userDto, BindingResult bindingResult){
+    public ModelAndView registerUser(@ModelAttribute("userDto") @Valid UserDto userDto, BindingResult bindingResult) throws Exception {
         try {
             if (bindingResult.hasErrors()) {
                 Object obj = bindingResult.getAllErrors().get(0);
@@ -52,7 +55,10 @@ public class AuthController {
             mv.addObject("message", ex.getMessage());
             return mv;
         }
-        UserEntity userEntity = userRegisterService.registerNewUserAccount(null,userDto);
+        List<RoleEntity> roleEntityList = new ArrayList<>();
+        roleEntityList.add(roleService.findByName(userDto.getRole()));
+        roleEntityList.add(roleService.findByName("USER"));
+        UserEntity userEntity = userRegisterService.registerNewUserAccount(roleEntityList,userDto);
         return new ModelAndView("main","user",userEntity);
     }
 

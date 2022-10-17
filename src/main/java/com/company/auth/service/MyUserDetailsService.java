@@ -2,8 +2,8 @@ package com.company.auth.service;
 
 import com.company.entity.RoleEntity;
 import com.company.entity.UserEntity;
-import com.company.service.RoleService;
-import com.company.service.UserService;
+import com.company.serviceImpl.RoleServiceImpl;
+import com.company.serviceImpl.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,9 +21,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MyUserDetailsService implements UserDetailsService {
 
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
-    private final RoleService roleService;
+    private final RoleServiceImpl roleService;
 
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         try {

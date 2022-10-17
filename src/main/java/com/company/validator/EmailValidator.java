@@ -3,7 +3,7 @@ package com.company.validator;
 import com.company.annotation.EmailExist;
 import com.company.dto.UserDto;
 import com.company.entity.UserEntity;
-import com.company.service.UserService;
+import com.company.serviceImpl.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 
 import javax.validation.ConstraintValidator;
@@ -13,7 +13,7 @@ import javax.validation.ConstraintValidatorContext;
 public class EmailValidator
         implements ConstraintValidator<EmailExist, Object> {
 
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
     @Override
     public void initialize(EmailExist constraintAnnotation) {

@@ -2,7 +2,9 @@ package com.company.entity;
 
 import com.company.common.AbstractEntity;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
+import javax.management.relation.Role;
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,4 +16,7 @@ public class RoleEntity extends AbstractEntity {
     private String name;
     @ManyToMany(mappedBy = "roleEntityList",fetch = FetchType.EAGER)
     private List<UserEntity> userEntityList;
+    public RoleEntity(String name){
+        this.name=name;
+    }
 }

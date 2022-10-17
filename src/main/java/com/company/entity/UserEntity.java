@@ -10,7 +10,6 @@ import java.util.List;
 
 @Entity
 @Data
-@NoArgsConstructor
 @Builder
 @Table(name="user",schema = "public")
 public class UserEntity extends AbstractEntity {
