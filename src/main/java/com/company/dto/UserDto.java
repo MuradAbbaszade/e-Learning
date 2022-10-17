@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -16,12 +17,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@RequiredArgsConstructor
+@NoArgsConstructor
 @EmailExist
 @PasswordMatches
 public class UserDto {
 
-    private final RoleService roleService;
+    @Autowired
+    RoleService roleService;
     private Long id;
     @NotEmpty(message = "Please fill the all fields")
     @Size(min = 2, max = 15, message = "Name size must be between 2 and 15")

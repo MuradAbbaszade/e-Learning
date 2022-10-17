@@ -2,9 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
     <title>Register</title>
+    <style>
+        body{
+            font-family: Arial;
+            background-color: antiquewhite;
+            align-content: center;
+        }
+        .register{
+            background-color: azure;
+            align-content: center;
+        }
+    </style>
 </head>
 <body>
-
+<div class="container">
+    <div class="register">
+        <label>Name</label>
+        <br>
+        <input id="name" name="name" type="text" minlength="2" maxlength="15"/>
+        <br>
+        <label>Surname</label>
+        <br>
+        <input id="surname" name="surname" type="text"/>
+        <br>
+        <label>Email</label>
+        <br>
+        <input id="email" name="email" type="email"/>
+        <br>
+        <label>Password</label>
+        <br>
+        <input id="password" name="password" type="password"/>
+        <br>
+        <label>Repeat Password</label>
+        <br>
+        <input id="repeassword" name="repassword" type="password"/>
+    </div>
+</div>
 </body>
 </html>
