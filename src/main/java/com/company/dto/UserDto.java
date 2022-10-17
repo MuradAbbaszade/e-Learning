@@ -21,13 +21,11 @@ import java.util.List;
 @EmailExist
 @PasswordMatches
 public class UserDto {
-
-    @Autowired
-    RoleService roleService;
     private Long id;
     private String name;
     private String surname;
     private String email;
     private String password;
     private String matchingPassword;
+    private String role;
 }

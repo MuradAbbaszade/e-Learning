@@ -3,12 +3,14 @@ package com.company.entity;
 import com.company.common.AbstractEntity;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Data
+@NoArgsConstructor
 @Builder
 @Table(name="user",schema = "public")
 public class UserEntity extends AbstractEntity {
