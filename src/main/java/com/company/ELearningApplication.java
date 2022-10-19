@@ -20,7 +20,6 @@ public class ELearningApplication {
         CommandLineRunner clr = new CommandLineRunner() {
             @Override
             public void run(String... args) throws Exception {
-System.out.println(roleService.findByName("STUDENT"));
             }
         };
         return clr;

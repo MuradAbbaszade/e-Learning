@@ -23,9 +23,9 @@ public class EmailValidator
         UserDto userDto = (UserDto) obj;
         try {
             UserEntity userEntity = userService.findByEmail(userDto.getEmail());
-            return true;
-        } catch (Exception e) {
             return false;
+        } catch (Exception e) {
+            return true;
         }
     }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <title>Register</title>
@@ -281,8 +281,8 @@
                 <i class="fas fa-lock"></i>
             </div>
             <div class="form-row">
-                <label for="repassword">Repeat Password</label>
-                <input type="password" name="repassword" id="repassword" class="input-text" placeholder="Repeat Password" required>
+                <label for="matchingPassword">Repeat Password</label>
+                <input type="password" name="matchingPassword" id="matchingPassword" class="input-text" placeholder="Repeat Password" required>
                 <i class="fas fa-lock"></i>
             </div>
             <div class="form-row">
@@ -291,6 +291,8 @@
                     <option value="TEACHER">Teacher</option>
                 </select>
             </div>
+            <br>
+            <label style="color:red" th:text="${message}"></label>
             <div class="form-row-last">
                 <input type="submit" name="register" class="register" value="Register">
             </div>
