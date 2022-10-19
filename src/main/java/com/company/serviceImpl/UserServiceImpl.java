@@ -11,34 +11,34 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements com.company.service.UserService {
 
-    private final UserRepository studentRepository;
+    private final UserRepository userRepository;
 
     @Override
     public UserEntity findById(Long id) throws Exception {
-        return studentRepository.findById(id)
-                .orElseThrow(() -> new Exception("Student not found"));
+        return userRepository.findById(id)
+                .orElseThrow(() -> new Exception("User not found"));
     }
 
     @Override
     public UserEntity findByEmail(String email) throws Exception {
-        return studentRepository.findByEmail(email)
-                .orElseThrow(() -> new Exception("Student not found"));
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new Exception("User not found"));
     }
 
     @Override
     public List<UserEntity> findAll() {
-        return studentRepository.findAll();
+        return userRepository.findAll();
     }
 
     @Override
     public UserEntity save(UserEntity studentEntity) {
-        return studentRepository.save(studentEntity);
+        return userRepository.save(studentEntity);
     }
 
     @Override
     public void deleteById(Long id) throws Exception {
-        studentRepository.findById(id)
-                .orElseThrow(() -> new Exception("Student not found"));
-        studentRepository.deleteById(id);
+        userRepository.findById(id)
+                .orElseThrow(() -> new Exception("User not found"));
+        userRepository.deleteById(id);
     }
 }

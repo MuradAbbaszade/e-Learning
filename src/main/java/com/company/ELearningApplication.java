@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.service.RoleService;
 import com.company.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -10,7 +11,7 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class ELearningApplication {
     @Autowired
-    UserService studentService;
+    RoleService roleService;
     public static void main(String[] args){
         SpringApplication.run(ELearningApplication.class);
     }
@@ -19,9 +20,8 @@ public class ELearningApplication {
         CommandLineRunner clr = new CommandLineRunner() {
             @Override
             public void run(String... args) throws Exception {
-
+System.out.println(roleService.findByName("STUDENT"));
             }
-
         };
         return clr;
     }

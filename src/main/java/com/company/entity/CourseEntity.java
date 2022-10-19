@@ -2,6 +2,7 @@ package com.company.entity;
 
 import com.company.common.AbstractEntity;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 @Data
 @Table(name="course",schema = "public")
 @Entity
+@NoArgsConstructor
 public class CourseEntity extends AbstractEntity {
     @Column(name="name")
     private String name;
