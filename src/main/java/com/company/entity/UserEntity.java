@@ -1,9 +1,11 @@
 package com.company.entity;
 
 import com.company.common.AbstractEntity;
+import jdk.nashorn.internal.objects.annotations.Constructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
@@ -21,7 +23,7 @@ public class UserEntity extends AbstractEntity {
     private String email;
     @Column(name="password")
     private String password;
-    @ManyToMany(mappedBy = "studentUserEntityList",fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "studentUserEntityList")
     private List<CourseEntity> purchasedCourseEntityList;
     @OneToMany(mappedBy = "teacherUserEntity")
     private List<CourseEntity> createdCourseEntityList;

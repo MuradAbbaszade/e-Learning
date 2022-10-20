@@ -5,6 +5,7 @@ import com.company.entity.RoleEntity;
 import com.company.entity.UserEntity;
 import com.company.serviceImpl.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
