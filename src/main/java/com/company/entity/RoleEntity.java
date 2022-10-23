@@ -16,7 +16,7 @@ import java.util.List;
 public class RoleEntity extends AbstractEntity {
     @Column(name="name")
     private String name;
-    @ManyToMany(mappedBy = "roleEntityList",fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "roleEntityList")
     private List<UserEntity> userEntityList;
     public RoleEntity(String name){
         this.name=name;
