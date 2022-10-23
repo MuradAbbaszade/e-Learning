@@ -23,13 +23,10 @@ public class MyUserDetailsService implements UserDetailsService {
 
     private final UserServiceImpl userService;
 
-    private final RoleServiceImpl roleService;
-
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         try {
             UserEntity userEntity = userService.findByEmail(email);
             User.UserBuilder builder = org.springframework.security.core.userdetails.User.withUsername(email);
-
             builder.disabled(false);
             builder.password(userEntity.getPassword());
             List<GrantedAuthority> authorityList = new ArrayList<>();

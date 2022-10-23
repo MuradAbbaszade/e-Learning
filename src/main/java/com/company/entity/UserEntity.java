@@ -2,17 +2,15 @@ package com.company.entity;
 
 import com.company.common.AbstractEntity;
 import jdk.nashorn.internal.objects.annotations.Constructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Data
-@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name="user",schema = "public")
 public class UserEntity extends AbstractEntity {
     @Column(name="name")
@@ -33,4 +31,5 @@ public class UserEntity extends AbstractEntity {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<RoleEntity> roleEntityList;
+
 }

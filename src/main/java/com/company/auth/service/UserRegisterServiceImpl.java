@@ -22,15 +22,13 @@ public class UserRegisterServiceImpl implements UserRegisterService {
     private final UserServiceImpl userService;
     @Override
     public UserEntity registerNewUserAccount(List<RoleEntity> roleEntityList,UserDto userDto) {
-        return userService.save(
-                UserEntity.builder()
-                .name(userDto.getName())
-                .surname(userDto.getSurname())
-                .email(userDto.getEmail())
-                .password(passwordEncoder().encode(userDto.getPassword()))
-                .roleEntityList(roleEntityList)
-                .build()
-        );
+        UserEntity userEntity = new UserEntity();
+        userEntity.setName(userDto.getName());
+        userEntity.setSurname(userDto.getSurname());
+        userEntity.setEmail(userDto.getEmail());
+        userEntity.setPassword(passwordEncoder().encode(userDto.getPassword()));
+        userEntity.setRoleEntityList(roleEntityList);
+        return userService.save(userEntity);
     }
     PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
