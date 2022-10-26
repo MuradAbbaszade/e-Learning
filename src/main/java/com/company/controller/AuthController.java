@@ -34,7 +34,7 @@ public class AuthController {
         return "register";
     }
     @GetMapping("login")
-    public String showLoginPage(){
+    public String showLoginPage(Model model){
         return "login";
     }
 
@@ -59,7 +59,9 @@ public class AuthController {
         roleEntityList.add(roleService.findByName(userDto.getRole()));
         roleEntityList.add(roleService.findByName("USER"));
         UserEntity userEntity = userRegisterService.registerNewUserAccount(roleEntityList,userDto);
-        return new ModelAndView("main","user",userEntity);
+        ModelAndView mv = new ModelAndView("main","userDto",userEntity);
+        mv.setViewName("/main");
+        return mv;
     }
 
     public MessageSource messageSource() {

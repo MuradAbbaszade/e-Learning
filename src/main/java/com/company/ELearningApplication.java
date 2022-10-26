@@ -20,6 +20,7 @@ public class ELearningApplication {
         CommandLineRunner clr = new CommandLineRunner() {
             @Override
             public void run(String... args) throws Exception {
+
             }
         };
         return clr;
