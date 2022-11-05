@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.io.File;
+import java.io.*;
 
 @Controller
 @RequestMapping("upload")
@@ -19,8 +19,23 @@ public class UploadController {
         return "upload";
     }
     @PostMapping
-    public ModelAndView uploadVideo(@RequestParam("video") MultipartFile video){
-        System.out.println(video);
+    public ModelAndView uploadVideo(@RequestParam("video") String file) throws IOException {
+        System.out.println(file);
+        /*byte[] bytes = read(file);
+        writeBytesToFile("video",bytes);*/
         return new ModelAndView("upload");
+    }
+
+    private void writeBytesToFile(String fileOutput, byte[] bytes) throws IOException {
+        try (FileOutputStream fos = new FileOutputStream(fileOutput)) {
+            fos.write(bytes);
+        }
+    }
+    public byte[] read(File file) throws IOException {
+        FileInputStream fl = new FileInputStream(file);
+        byte[] arr = new byte[(int)file.length()];
+        fl.read(arr);
+        fl.close();
+        return arr;
     }
 }

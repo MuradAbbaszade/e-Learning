@@ -1,6 +1,5 @@
 package com.company.auth.service.config;
 
-import com.company.auth.service.GoogleOAuth2SuccessHandler;
 import com.company.auth.service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -18,9 +17,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private MyUserDetailsService userDetailsService;
-
-    @Autowired
-    private GoogleOAuth2SuccessHandler googleOAuth2SuccessHandler;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -42,9 +38,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/register").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .oauth2Login()
+                .formLogin()
                 .loginPage("/login")
-                .successHandler(googleOAuth2SuccessHandler)
                 .defaultSuccessUrl("/main",true)
                 .and()
                 .logout()
