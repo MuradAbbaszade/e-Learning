@@ -13,6 +13,8 @@ import javax.persistence.*;
 public class VideoEntity extends AbstractEntity {
     @Column(name="name")
     private String name;
+    @Column(name="link")
+    private String link;
     @ManyToOne
     @JoinColumn(name="course_id",referencedColumnName = "id")
     private CourseEntity courseEntity;

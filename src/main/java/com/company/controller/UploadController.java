@@ -10,13 +10,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.*;
 
-@Controller
+@RestController
 @RequestMapping("upload")
 public class UploadController {
 
     @GetMapping
-    public String showUploadPage(){
-        return "upload";
+    public ModelAndView showUploadPage(){
+        return new ModelAndView("upload");
     }
     @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
     public ModelAndView uploadVideo(@RequestParam("video") MultipartFile multipartFile,

@@ -35,4 +35,10 @@ public class CourseServiceImpl implements com.company.service.CourseService {
                 .orElseThrow(()->new Exception("Course not found"));
         courseRepository.deleteById(id);
     }
+
+    @Override
+    public List<CourseEntity> findByQuery(String q) throws Exception {
+        return courseRepository.findByQuery(q)
+                .orElseThrow(()->new Exception("Course not found"));
+    }
 }

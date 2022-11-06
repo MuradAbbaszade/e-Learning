@@ -16,6 +16,8 @@ public class CourseEntity extends AbstractEntity {
     private String name;
     @Column(name="price")
     private double price;
+    @Column(name="image")
+    private String image;
     @ManyToOne
     @JoinColumn(name="field_id",referencedColumnName = "id")
     private FieldEntity fieldEntity;

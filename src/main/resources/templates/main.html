@@ -12,9 +12,8 @@
     <div th:if="${userRole == 'TEACHER'}">Hello Teacher</div>
 </div>
 <div>
-    <div th:if="${userRole == 'TEACHER'}">
-        <a href="upload">Upload video</a>
-    </div>
+    <input type="text" maxlength="50" id="search" name="search">
+    <button>Search</button>
 </div>
 </body>
 </html>

@@ -9,4 +9,5 @@ public interface CourseService {
     List<CourseEntity> findAll();
     CourseEntity save(CourseEntity studentEntity);
     void deleteById(Long id) throws Exception;
+    List<CourseEntity> findByQuery(String q) throws Exception;
 }
