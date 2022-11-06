@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Upload video</title>
@@ -8,19 +8,25 @@
         function sendFile(){
             var file = document.getElementById("video")
             var name = document.getElementById("name")
-            if(file.value!='' & name.value!='') {
+            var course = document.getElementById("course")
+            if(file.value!='' & name.value!='' & course.value!='') {
                 var formData = new FormData()
                 formData.append("video", file.files[0])
                 formData.append("name", name.value)
+                formData.append("id",course.value)
                 axios.post("http://localhost:8080/upload", formData)
+                alert("Succesfully uploaded!")
             }
         }
     </script>
 </head>
 <body>
 <label>Upload your video</label>
-<input required type="text" id="name" name="name" maxlength="40" minlength="3">
-<input required type="file" id="video" name="video" multiple="multiple" accept="video/mp4">
+<input type="text" id="name" name="name" maxlength="40" minlength="3">
+<input type="file" id="video" name="video" multiple="multiple" accept="video/mp4">
+<select name="course" id="course">
+    <option th:each="course:${courses}" th:value="${course.id}" th:text="${course.name}"></option>
+</select>
 <button type="submit" onclick="sendFile()">Submit</button>
 </body>
 </html>
