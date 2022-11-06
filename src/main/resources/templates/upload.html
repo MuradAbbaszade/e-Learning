@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Upload video</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        function uploadFile(){
+                var file = document.getElementById("video")
+                var formData = new FormData()
+                formData.append("video", file.files[0])
+                axios.post("http://localhost:8080/upload", formData)
+        }
+    </script>
 </head>
 <body>
-<form action="upload" method="POST">
     <label>Upload your video</label>
-    <input type="file" id="video" name="video" accept="video/mp4,video/x-m4v,video/*">
-    <button type="submit">Submit</button>
-</form>
+    <input type="file" id="video" name="video" multiple="multiple" accept="video/mp4,video/x-m4v,video/*">
+    <button onclick="uploadFile()">Submit</button>
 </body>
 </html>
