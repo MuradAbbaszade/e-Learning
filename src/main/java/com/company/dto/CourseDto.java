@@ -8,6 +8,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class CourseDto {
+    private Long id;
     private String name;
     private double price;
     private String image;

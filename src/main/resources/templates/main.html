@@ -12,8 +12,10 @@
     <div th:if="${userRole == 'TEACHER'}">Hello Teacher</div>
 </div>
 <div>
-    <input type="text" maxlength="50" id="search" name="search">
-    <button>Search</button>
+    <form method="GET" action="/courses/search">
+    <input type="text" maxlength="50" id="searchQuery" name="searchQuery">
+    <button type="submit">Search</button>
+    </form>
 </div>
 </body>
 </html>

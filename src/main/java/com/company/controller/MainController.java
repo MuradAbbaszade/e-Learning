@@ -11,25 +11,32 @@ import com.company.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
-@RequestMapping("main")
+@Controller
 @RequiredArgsConstructor
 public class MainController {
 
     private final UserService userService;
     private final CourseService courseService;
 
-    @GetMapping
+    @GetMapping("courses")
+    public String showCoursesPage(){
+        return "courses";
+    }
+
+    @GetMapping("course")
+    public String showCoursePage(){
+        return "course";
+    }
+
+    @GetMapping("main")
     public ModelAndView showMainPage(WebRequest request) throws Exception {
         UserEntity user = userService.findByEmail(request.getRemoteUser());
         String userRole="";
@@ -41,12 +48,13 @@ public class MainController {
         return mv;
     }
 
-    @GetMapping("courses/search/q={q}")
-    public ResponseEntity<List<CourseDto>> searchCourse(@PathVariable String q) throws Exception {
+    @GetMapping("courses/search")
+    public ModelAndView searchCourse(@RequestParam("searchQuery") String q) throws Exception {
         List<CourseEntity> courseEntityList = courseService.findByQuery(q);
         List<CourseDto> courseDtoList = new ArrayList<>();
         for(CourseEntity courseEntity : courseEntityList){
             CourseDto courseDto = new CourseDto();
+            courseDto.setId(courseEntity.getId());
             courseDto.setName(courseEntity.getName());
             courseDto.setField(courseEntity.getFieldEntity().getName());
             courseDto.setPrice(courseEntity.getPrice());
@@ -55,8 +63,22 @@ public class MainController {
             courseDto.setVideoDtoList(toVideoDtoList(courseEntity.getVideoEntityList()));
             courseDtoList.add(courseDto);
         }
-        return ResponseEntity.ok(courseDtoList);
+        return new ModelAndView("courses","courseList",courseDtoList);
     }
+
+    @GetMapping("course/search")
+    public ModelAndView searchCourse(@RequestParam("id") Long id) throws Exception {
+        CourseEntity courseEntity =  courseService.findById(id);
+        CourseDto courseDto = new CourseDto();
+        courseDto.setName(courseEntity.getName());
+        courseDto.setField(courseEntity.getFieldEntity().getName());
+        courseDto.setPrice(courseEntity.getPrice());
+        courseDto.setImage(courseEntity.getImage());
+        courseDto.setTeacherName(courseEntity.getTeacherUserEntity().getName());
+        courseDto.setVideoDtoList(toVideoDtoList(courseEntity.getVideoEntityList()));
+        return new ModelAndView("course","course",courseDto);
+    }
+
     public List<VideoDto> toVideoDtoList(List<VideoEntity> videoEntityList){
         List<VideoDto> videoDtoList = new ArrayList<>();
         for(VideoEntity videoEntity : videoEntityList){

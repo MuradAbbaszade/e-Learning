@@ -1,10 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+<div>
+    <form method="GET" action="/courses/search">
+        <input type="text" maxlength="50" id="searchQuery" name="searchQuery">
+        <button type="submit">Search</button>
+    </form>
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <td>Preview</td>
+                <td>Name</td>
+                <td>Field</td>
+            </tr>
+            </thead>
+            <tbody th:each="course: ${courseList}">
+            <tr>
+                <td><img src="" height="100px" th:src="@{${course.image}}"></td>
+                <td th:text="${course.name}"></td>
+                <td th:text="${course.field}"></td>
+                <td>
+                    <form action="/course/search" method="GET">
+                        <input type="hidden" name="id" th:value="${course.id}">
+                        <button type="submit">View</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
 </html>
