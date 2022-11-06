@@ -21,9 +21,7 @@ public class UploadController {
     @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
     public ModelAndView uploadVideo(@RequestParam("video") MultipartFile multipartFile,
                                     @RequestParam("name") String name) throws IOException {
-        System.out.println("asd"+name);
-        System.out.println(multipartFile.getSize());
-        File file = new File(name+".mp4");
+        File file = new File("src/main/resources/video/"+name+".mp4");
         try (OutputStream os = new FileOutputStream(file)) {
             os.write(multipartFile.getBytes());
         }

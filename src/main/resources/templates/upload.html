@@ -8,17 +8,19 @@
         function sendFile(){
             var file = document.getElementById("video")
             var name = document.getElementById("name")
-            var formData = new FormData()
-            formData.append("video",file.files[0])
-            formData.append("name",name.value)
-            axios.post("http://localhost:8080/upload", formData)
+            if(file.value!='' & name.value!='') {
+                var formData = new FormData()
+                formData.append("video", file.files[0])
+                formData.append("name", name.value)
+                axios.post("http://localhost:8080/upload", formData)
+            }
         }
     </script>
 </head>
 <body>
-    <label>Upload your video</label>
-    <input type="text" id="name" name="name" maxlength="40" minlength="3">
-    <input type="file" id="video" name="video" multiple="multiple" accept="video/mp4,video/x-m4v,video/*">
-    <button onclick="sendFile()">Submit</button>
+<label>Upload your video</label>
+<input required type="text" id="name" name="name" maxlength="40" minlength="3">
+<input required type="file" id="video" name="video" multiple="multiple" accept="video/mp4">
+<button type="submit" onclick="sendFile()">Submit</button>
 </body>
 </html>
